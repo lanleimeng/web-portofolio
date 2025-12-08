@@ -9,20 +9,20 @@ const projects = [
     title: "Job-Finder Web App",
     description: "A responsive web dashboard built with React, TypeScript, and Express, featuring real-time data visualization and user management.",
     image: "https://images.unsplash.com/photo-1641567535859-c58187ac4954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBhcHBsaWNhdGlvbiUyMHNjcmVlbnNob3R8ZW58MXx8fHwxNzU4OTY3MzYwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    technologies: ["React", "Express", "MongoDB", "TypeScript", "REST API"],
+    technologies: ["React", "Express", "MongoDB", "TypeScript","Tailwind" ],
     bgColor: "bg-[#f8d7da]", 
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://jobfinder-fawn.vercel.app/",
+    githubUrl: "https://github.com/lanleimeng/jobfinder.git"
   },
   {
     id: 2,
-    title: "Flutter Task Manager",
-    description: "A cross-platform mobile application for task management with offline capability and cloud synchronization.",
+    title: "POS and Inventory Managment Mobile App",
+    description: "A mobile POS and inventory management app designed to help businesses track sales, manage stock, and monitor daily operations in real time.",
     image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2UlMjBkZXNpZ258ZW58MXx8fHwxNzU4OTQ1ODU2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    technologies: ["Flutter", "Firebase", "Dart"],
+    technologies: ["Flutter", "MySQL", "Dart"],
     bgColor: "bg-[#cde6f5]", // baby blue
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "https://github.com/BBBIJI/Finals_POS.git"
   },
   {
     id: 3,
@@ -32,17 +32,17 @@ const projects = [
     technologies: ["JavaScript", "Express", "MongoDB", "Mongoose"],
     bgColor: "bg-[#f8d7da]", // blush pink
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "https://github.com/lanleimeng/pipentales.git"
   },
   {
     id: 4,
-    title: "Personal Blog Website",
-    description: "A responsive blog platform with CMS integration, SEO optimization, and social media sharing capabilities.",
+    title: "company profile website",
+    description: "A modern company profile website built with Next.js, Tailwind CSS, and TypeScript, designed for fast performance, responsive layouts, and a clean user experience.",
     image: "https://images.unsplash.com/photo-1641567535859-c58187ac4954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBhcHBsaWNhdGlvbiUyMHNjcmVlbnNob3R8ZW58MXx8fHwxNzU4OTY3MzYwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    technologies: ["HTML", "CSS", "JavaScript", "REST API"],
+    technologies: ["HTML", "CSS", "Typescript","Next.js","Tailwind CSS"],
     bgColor: "bg-[#cde6f5]", // baby blue
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://www.tigabayangutama.com/",
+    githubUrl: "https://github.com/lanleimeng/landingpage-tbu.git"
   }
 ];
 
@@ -64,7 +64,7 @@ export function Projects() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project, ) => (
             <Card key={project.id} className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 hover:scale-[1.02] rounded-3xl overflow-hidden group backdrop-blur-xl bg-white/20 border border-white/30">
               <CardContent className="p-0">
                 {/* Image Container with Glass Overlay */}

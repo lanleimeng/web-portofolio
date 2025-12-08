@@ -70,7 +70,7 @@ export function Skills() {
         
         {/* Glass Skills Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {skills.map((skill, index) => (
+          {skills.map((skill,) => (
             <div
               key={skill.name}
               className="backdrop-blur-xl bg-white/20 border border-white/30 rounded-3xl p-6 text-center transition-all duration-500 hover:scale-110 hover:shadow-2xl group cursor-pointer hover:-translate-y-2 relative overflow-hidden"
