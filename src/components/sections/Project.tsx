@@ -38,7 +38,7 @@ const projects = [
     id: 4,
     title: "company profile website",
     description: "A modern company profile website built with Next.js, Tailwind CSS, and TypeScript, designed for fast performance, responsive layouts, and a clean user experience.",
-    image: "/public/projects/tbu.png",
+    image: "/projects/tbu.png",
     technologies: ["HTML", "CSS", "Typescript","Next.js","Tailwind CSS"],
     bgColor: "bg-[#cde6f5]", // baby blue
     liveUrl: "https://www.tigabayangutama.com/",
