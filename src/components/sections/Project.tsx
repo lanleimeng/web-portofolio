@@ -8,7 +8,7 @@ const projects = [
     id: 1,
     title: "Job-Finder Web App",
     description: "A responsive web dashboard built with React, TypeScript, and Express, featuring real-time data visualization and user management.",
-    image: "https://images.unsplash.com/photo-1641567535859-c58187ac4954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBhcHBsaWNhdGlvbiUyMHNjcmVlbnNob3R8ZW58MXx8fHwxNzU4OTY3MzYwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/projects/jobfinder.png",
     technologies: ["React", "Express", "MongoDB", "TypeScript","Tailwind" ],
     bgColor: "bg-[#f8d7da]", 
     liveUrl: "https://jobfinder-fawn.vercel.app/",
@@ -18,7 +18,7 @@ const projects = [
     id: 2,
     title: "POS and Inventory Managment Mobile App",
     description: "A mobile POS and inventory management app designed to help businesses track sales, manage stock, and monitor daily operations in real time.",
-    image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2UlMjBkZXNpZ258ZW58MXx8fHwxNzU4OTQ1ODU2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/projects/logogreen_tablet.PNG",
     technologies: ["Flutter", "MySQL", "Dart"],
     bgColor: "bg-[#cde6f5]", // baby blue
     liveUrl: "#",
@@ -28,7 +28,7 @@ const projects = [
     id: 3,
     title: "E-commerce Platform",
     description: "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
-    image: "https://images.unsplash.com/photo-1577333715735-8fcb0359d906?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjB3ZWJzaXRlJTIwbW9ja3VwfGVufDF8fHx8MTc1ODk2NzM2MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/projects/underconstruction.png",
     technologies: ["JavaScript", "Express", "MongoDB", "Mongoose"],
     bgColor: "bg-[#f8d7da]", // blush pink
     liveUrl: "#",
@@ -38,7 +38,7 @@ const projects = [
     id: 4,
     title: "company profile website",
     description: "A modern company profile website built with Next.js, Tailwind CSS, and TypeScript, designed for fast performance, responsive layouts, and a clean user experience.",
-    image: "https://images.unsplash.com/photo-1641567535859-c58187ac4954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBhcHBsaWNhdGlvbiUyMHNjcmVlbnNob3R8ZW58MXx8fHwxNzU4OTY3MzYwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/public/projects/tbu.png",
     technologies: ["HTML", "CSS", "Typescript","Next.js","Tailwind CSS"],
     bgColor: "bg-[#cde6f5]", // baby blue
     liveUrl: "https://www.tigabayangutama.com/",
@@ -72,7 +72,7 @@ export function Projects() {
                   <ImageWithFallback
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover transition-all duration-500 group-hover:scale-110"
+                    className="w-full h-48 object-contain transition-all duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   
