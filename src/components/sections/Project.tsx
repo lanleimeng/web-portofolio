@@ -10,7 +10,6 @@ import { Sparkles } from "lucide-react";
 
 export function Projects() {
   const { ref, isVisible } = useScrollAnimation();
-  const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,12 +26,11 @@ export function Projects() {
   // Filter projects
   const filteredProjects = useMemo(() => {
     return projectsData.filter((project) => {
-      const typeMatch = !selectedType || project.type === selectedType;
       const techMatch =
         !selectedTech || project.technologies.includes(selectedTech);
-      return typeMatch && techMatch;
+      return techMatch;
     });
-  }, [selectedType, selectedTech]);
+  }, [selectedTech]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,9 +87,7 @@ export function Projects() {
 
         {/* Filters */}
         <ProjectFilter
-          selectedType={selectedType}
           selectedTech={selectedTech}
-          onTypeChange={setSelectedType}
           onTechChange={setSelectedTech}
           allTechs={allTechs}
         />

@@ -1,21 +1,16 @@
 import { motion } from 'framer-motion';
 
 interface ProjectFilterProps {
-  selectedType: string | null;
   selectedTech: string | null;
-  onTypeChange: (type: string | null) => void;
   onTechChange: (tech: string | null) => void;
   allTechs: string[];
 }
 
 export function ProjectFilter({
-  selectedType,
   selectedTech,
-  onTypeChange,
   onTechChange,
   allTechs,
 }: ProjectFilterProps) {
-  const types = ['web', 'mobile', 'platform'];
 
   return (
     <motion.div
