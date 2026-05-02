@@ -2,6 +2,8 @@ import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { ImageWithFallback } from "../ImageWithFallback";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const projects = [
   {
@@ -47,6 +49,28 @@ const projects = [
 ];
 
 export function Projects() {
+  const { ref, isVisible } = useScrollAnimation();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
   return (
     <section id="projects" className="py-20 px-6 bg-gradient-to-b from-transparent via-[#f8f9fa]/30 to-transparent relative">
       {/* Glass Background Layer */}
@@ -54,77 +78,120 @@ export function Projects() {
       
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Glass Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <div className="backdrop-blur-xl bg-white/20 border border-white/30 rounded-3xl p-8 shadow-2xl mb-8 inline-block">
             <h2 className="text-4xl mb-4 text-gray-800 drop-shadow-lg">Featured Projects</h2>
             <p className="text-xl text-gray-700 max-w-2xl">
               Here are some of my recent projects that showcase my skills in web development and mobile app creation.
             </p>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, ) => (
-            <Card key={project.id} className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 hover:scale-[1.02] rounded-3xl overflow-hidden group backdrop-blur-xl bg-white/20 border border-white/30">
-              <CardContent className="p-0">
-                {/* Image Container with Glass Overlay */}
-                <div className="relative overflow-hidden">
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-contain transition-all duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  
-                  {/* Glass Overlay on Image */}
-                  <div className="absolute inset-0 backdrop-blur-[1px] bg-white/5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                </div>
-                
-                {/* Content with Glass Effect */}
-                <div className="p-6 backdrop-blur-lg bg-white/30 border-t border-white/20">
-                  <h3 className="text-xl mb-3 text-gray-800 drop-shadow-sm">{project.title}</h3>
-                  <div className="backdrop-blur-sm bg-white/20 p-4 rounded-2xl border border-white/30 mb-4">
-                    <p className="text-gray-700 leading-relaxed">{project.description}</p>
-                  </div>
-                  
-                  {/* Glass Tech Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 backdrop-blur-md bg-white/30 text-gray-700 rounded-full text-sm border border-white/40 shadow-lg hover:bg-white/40 transition-all duration-200"
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+          className="grid md:grid-cols-2 gap-8"
+        >
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              variants={itemVariants}
+            >
+              <motion.div
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              >
+                <Card className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] rounded-3xl overflow-hidden group backdrop-blur-xl bg-white/20 border border-white/30">
+                  <CardContent className="p-0">
+                    {/* Image Container with Glass Overlay */}
+                    <div className="relative overflow-hidden h-48">
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                        className="w-full h-full"
                       >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Glass Buttons */}
-                  <div className="flex gap-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="backdrop-blur-md bg-white/30 border-white/40 text-gray-700 hover:bg-white/50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                      onClick={() => window.open(project.liveUrl, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="backdrop-blur-md bg-white/30 border-white/40 text-gray-700 hover:bg-white/50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                      onClick={() => window.open(project.githubUrl, '_blank')}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                        <ImageWithFallback
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-contain"
+                        />
+                      </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                      
+                      {/* Glass Overlay on Image */}
+                      <div className="absolute inset-0 backdrop-blur-[1px] bg-white/5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                    </div>
+                    
+                    {/* Content with Glass Effect */}
+                    <div className="p-6 backdrop-blur-lg bg-white/30 border-t border-white/20">
+                      <motion.h3 
+                        initial={{ opacity: 0 }}
+                        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-xl mb-3 text-gray-800 drop-shadow-sm"
+                      >
+                        {project.title}
+                      </motion.h3>
+                      <div className="backdrop-blur-sm bg-white/20 p-4 rounded-2xl border border-white/30 mb-4">
+                        <p className="text-gray-700 leading-relaxed">{project.description}</p>
+                      </div>
+                      
+                      {/* Glass Tech Tags */}
+                      <motion.div 
+                        className="flex flex-wrap gap-2 mb-6"
+                        initial={{ opacity: 0 }}
+                        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        {project.technologies.map((tech) => (
+                          <motion.span
+                            key={tech}
+                            whileHover={{ scale: 1.1 }}
+                            className="px-3 py-1 backdrop-blur-md bg-white/30 text-gray-700 rounded-full text-sm border border-white/40 shadow-lg hover:bg-white/40 transition-all duration-200"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </motion.div>
+                      
+                      {/* Glass Buttons */}
+                      <div className="flex gap-3">
+                        <motion.div whileHover={{ scale: 1.05 }} className="flex-1">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full backdrop-blur-md bg-white/30 border-white/40 text-gray-700 hover:bg-white/50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                            onClick={() => window.open(project.liveUrl, '_blank')}
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Live Demo
+                          </Button>
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.05 }} className="flex-1">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full backdrop-blur-md bg-white/30 border-white/40 text-gray-700 hover:bg-white/50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                            onClick={() => window.open(project.githubUrl, '_blank')}
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            Code
+                          </Button>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

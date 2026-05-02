@@ -2,6 +2,7 @@ import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Projects } from "./components/sections/Project";
 import { Skills } from "./components/sections/Skills";
+import { Navbar } from "./components/Navbar";
 
 import { Toaster } from "./components/ui/sonner";
 
@@ -10,6 +11,8 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-[#B8EBD0]/20 via-white to-[#DCC8F0]/20 relative">
       {/* Global Glass Overlay */}
       <div className="fixed inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/10 pointer-events-none z-0" />
+      
+      <Navbar />
       
       <div className="relative z-10">
         <Hero />
